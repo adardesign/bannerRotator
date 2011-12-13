@@ -1,4 +1,4 @@
-// bannerRotate, Version 1.3
+// bannerRotate, Version 1.4
 // Copyright (c) Oct 3, 2010 adardesign.com
 // bannerRotate is freely distributable under the terms of an MIT-style license
 // This means you are free to use the code, but please leave this copyright notice intact
@@ -65,6 +65,7 @@
                     initTime = 0,
 					relToSrced = false,
                     fadeIntervalID,
+					indexOfClicked,
 					newSchedFadeInterval,
 					newSschedcallDoFade,
 					fadeTimeout,
@@ -99,8 +100,6 @@
                 });
                 bannerContainer.hover(function(){
 					options.stopInterval(fadeIntervalID);
-					//options.stopTimeout(schedFadeInterval);
-					//options.stopTimeout(schedcallDoFade);
 					options.stopAnimation(banners);
 					},
 					function(){
@@ -124,14 +123,13 @@
                 // delegate (to boost performance)
                 .find(".controlsContainer").delegate("a", "click", function () {
                     !relToSrced && relToSrc();
-					
 					var clickedNav = $(this);
                     if (clickedNav.hasClass("active")) {
                         return false
                     }
                     clickedNav.siblings().removeClass("active");
                     clickedNav.addClass("active");
-                    indexOfClicked = bannerNav.index(clickedNav);
+					indexOfClicked = bannerNav.index(clickedNav);
                     banners.eq(last).fadeOut(options.secSpeed);
                     banners.eq(indexOfClicked).fadeIn(options.secSpeed, function () {
                         banners.eq(indexOfClicked).css("opacity", 1);

@@ -2,16 +2,75 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!-- Source is http://www.adorama.com/catalog.tpl?op=brands&brand=Canon&humansrch=canon -->
 <head>
-<title>Holiday shopping center 2012</title>
-<link rel="stylesheet" href="http://www.adorama.com/SearchSite/combres.axd/HomePageCss/1679556225/">
-<link rel="stylesheet" href="adoramaHol12.css">
+<title>Banner rotator</title>
+
+<style>
+.rotateWidget {
+position: relative;
+border: 1px solid #CCC;
+width: 550px;
+height: 245px;
+float: left;
+text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.rotateWidget > * {
+display: none;
+position: absolute;
+width: 550px;
+height: 245px;
+top: 0;
+left: 0;
+float: left;
+}
+.rotateWidget > :first-child {
+z-index: 10;
+display: block;
+}
+
+.rotateWidget > .controlscontainer {
+position: absolute;
+height: 15px;
+width: auto;
+z-index: 20;
+left: auto;
+right: 10px;
+top: 10px;
+display: block;
+}
+.rotateWidget  > .controlscontainer > a {
+background-color: #999;
+background-color: rgba(0, 0, 0, 0.3);
+width: 13px;
+height: 6px;
+box-shadow: 0 0 1px rgba(255,255,255,0.9),0 1px 0 rgba(0,0,0,0.2) inset;
+border-radius: 2px;
+position: relative;
+top: -2px;
+margin-right: 2px;
+float:left;
+}
+.rotateWidget  > .controlscontainer > a.active {
+background-color: white;
+background-color: rgba(255, 255, 255, 0.85);
+box-shadow: 0 0 1px rgba(0,0,0,0.2),0 1px 0 white inset,0 1px 0 rgba(0,0,0,0.25);
+}
+</style>
+
 </head>
-<body style="background:none;">
-<div id="holWrapper" class="homePage">
-	<div class="MainBannerNDailyDeal holSection">
-		<div class="rotateWidget leftBlock borderNRadius" id="mainBannersRotate"> <a onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'intel_WIDi']);" href="catalog.tpl?op=intel_WIDi" style="background:url(images/extendedWarrenty.jpg);"></a> <a onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'GiantsOfficialRetailer_v3']);" rel="url(http://www.adorama.com/artworks2/homePage_bnr_GiantsOfficialRetailer_v3.jpg)"></a> <a  onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'Panasonic-Avatar3D-promo']);" href="SearchSite/Default.aspx?searchinfo=panasonic%20blu%20ray%20player" rel="url(http://www.adorama.com/artworks2/home_bnr_Panasonic-Avatar3D-promo.jpg)"> </a> <a onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'Adobe-PSElements10-Announcement']);" href="SearchSite/Default.aspx?searchinfo=photoshop+elements+10&category=4294967278" rel="url(http://www.adorama.com/artworks2/HomeBNR-Adobe-PSElements10-Announcement-2011-09-20.jpg)"> </a> <a onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'Clickby7']);" href="catalog.tpl?op=FAQ#SHIPPING" rel="url(http://www.adorama.com/artworks2/home_bnr_548x245_Clickby7.jpg)"> </a> <a onclick="_gaq.push(['_trackEvent', 'FrontPageBanner', 'eBook']);" href="ALC.MVC/eBooks" rel="url(http://www.adorama.com/artworks2/homePage_banner_eBook_familyPhotography.jpg)"></a> </div>
-	</div>
+<body>
+	<div class="rotateWidget" id="mainBannersRotate">
+        	<a href="#" style="background:url(http://lorempixel.com/600/245/sports/);"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/animals/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/people/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/transport/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/city/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/abstract/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/nature/)"></a>
+            <a href="#" rel="url(http://lorempixel.com/600/245/animals/)"></a>
 </div>
+
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script> 
 <script type="text/javascript" src="jquery.bannerRotate-1.4.js"></script> 
 <script type="text/javascript">
