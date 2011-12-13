@@ -5,7 +5,7 @@
 // Added relToSrc performance....
 (function ($) {
     $.fn.bannerRotate = function (options) {
-	 'use strict';
+        'use strict';
         var defaults = {
             speed: 500,
             secSpeed: 500,
@@ -25,12 +25,16 @@
                 b.stop(true, true);
             },
             stopInterval: function (interv) {
-                if(!interv) {return}
-				window.clearInterval(interv);
+                if (!interv) {
+                    return
+                }
+                window.clearInterval(interv);
             },
             stopTimeout: function (timeOut) {
-                if(!timeOut) {return}
-				window.clearTimeout(timeOut);
+                if (!timeOut) {
+                    return
+                }
+                window.clearTimeout(timeOut);
             },
             addHoverUsability: {
                 active: true,
@@ -38,7 +42,7 @@
                     return new Date().getTime();
                 },
                 timeLapsed: function (initTime) {
-					var timeNow = this.getMiliseconds();
+                    var timeNow = this.getMiliseconds();
                     return timeNow - initTime;
                 }
             }
@@ -63,59 +67,55 @@
                         }
                     },
                     initTime = 0,
-					relToSrced = false,
-                    fadeIntervalID,
-					indexOfClicked,
-					newSchedFadeInterval,
-					newSschedcallDoFade,
-					fadeTimeout,
-					fadeInterval = function () {
-					    if (options.addHoverUsability.active) {
+                    relToSrced = false,
+                    fadeIntervalID, indexOfClicked, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout, fadeInterval = function () {
+                        if (options.addHoverUsability.active) {
                             do {
                                 initTime = options.addHoverUsability.getMiliseconds();
                             } while (0);
                         }
-                       	banners.eq(next).fadeIn(options.speed);
+                        banners.eq(next).fadeIn(options.speed);
                         banners.eq(last).fadeOut(options.speed);
                         bannerNav.eq(last).removeClass("active");
                         bannerNav.eq(next).addClass("active");
                         updateValues();
                     },
                     schedFadeInterval = function () {
-                     	fadeIntervalID = setInterval(fadeInterval, options.interval)
+                        fadeIntervalID = setInterval(fadeInterval, options.interval)
                     },
                     relToSrc = function () {
-						if(relToSrced){return}
-	                        bannerContainer.find("> :gt(0)").not(".controlsContainer").each(function (i, e) {
+                        if (relToSrced) {
+                            return
+                        }
+                        bannerContainer.find("> :gt(0)").not(".controlsContainer").each(function (i, e) {
                             var el = $(e);
                             el.css("background", el.attr("rel"));
-							relToSrced = true
+                            relToSrced = true
                         });
                     }
-               
-                // prevents children elements to trigger mouseout from rotating banner
-                //TODO: figure out why jQuery 1.4.3 doesnt respond when false passed in as the callback
-                banners.children().bind("mouseover", function (e) {
-                    e.preventDefault();
-                });
-                bannerContainer.hover(function(){
-					options.stopInterval(fadeIntervalID);
-					options.stopAnimation(banners);
-					},
-					function(){
-						if (options.addHoverUsability.active) {
-							if(newSchedFadeInterval){
-								options.stopTimeout(newSchedFadeInterval);
-								options.stopTimeout(newSschedcallDoFade);
-							}
-	                    var timeLapsed = options.addHoverUsability.timeLapsed(initTime);
+
+                    // prevents children elements to trigger mouseout from rotating banner
+                    //TODO: figure out why jQuery 1.4.3 doesnt respond when false passed in as the callback
+                    banners.children().bind("mouseover", function (e) {
+                        e.preventDefault();
+                    });
+                bannerContainer.hover(function () {
+                    options.stopInterval(fadeIntervalID);
+                    options.stopAnimation(banners);
+                }, function () {
+                    if (options.addHoverUsability.active) {
+                        if (newSchedFadeInterval) {
+                            options.stopTimeout(newSchedFadeInterval);
+                            options.stopTimeout(newSschedcallDoFade);
+                        }
+                        var timeLapsed = options.addHoverUsability.timeLapsed(initTime);
                         if (timeLapsed >= options.interval) {
                             schedFadeInterval();
                             fadeInterval();
                         } else {
-	                        newSchedFadeInterval = setTimeout(fadeInterval, options.interval - timeLapsed);
-                            newSschedcallDoFade =  setTimeout(schedFadeInterval, (options.interval - timeLapsed) + options.speed);
-	                    }
+                            newSchedFadeInterval = setTimeout(fadeInterval, options.interval - timeLapsed);
+                            newSschedcallDoFade = setTimeout(schedFadeInterval, (options.interval - timeLapsed) + options.speed);
+                        }
                     } else {
                         schedFadeInterval();
                     }
@@ -123,13 +123,13 @@
                 // delegate (to boost performance)
                 .find(".controlsContainer").delegate("a", "click", function () {
                     !relToSrced && relToSrc();
-					var clickedNav = $(this);
+                    var clickedNav = $(this);
                     if (clickedNav.hasClass("active")) {
                         return false
                     }
                     clickedNav.siblings().removeClass("active");
                     clickedNav.addClass("active");
-					indexOfClicked = bannerNav.index(clickedNav);
+                    indexOfClicked = bannerNav.index(clickedNav);
                     banners.eq(last).fadeOut(options.secSpeed);
                     banners.eq(indexOfClicked).fadeIn(options.secSpeed, function () {
                         banners.eq(indexOfClicked).css("opacity", 1);
@@ -145,17 +145,17 @@
                     }
                 })
             }
-			
-			     // init things to do
-                bannerNav.eq(0).addClass("active");
-                banners.not(":eq(0)").hide();
-			 	schedFadeInterval();
-                setTimeout(relToSrc, options.interval / 2);
-                if (options.addHoverUsability.active) {
-                    do {
-                        initTime = options.addHoverUsability.getMiliseconds();
-                    } while (0);
-                }
+
+            // init things to do
+            bannerNav.eq(0).addClass("active");
+            banners.not(":eq(0)").hide();
+            schedFadeInterval();
+            setTimeout(relToSrc, options.interval / 2);
+            if (options.addHoverUsability.active) {
+                do {
+                    initTime = options.addHoverUsability.getMiliseconds();
+                } while (0);
+            }
         });
     };
 })(jQuery);
