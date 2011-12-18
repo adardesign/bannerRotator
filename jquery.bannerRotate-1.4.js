@@ -4,8 +4,8 @@
 // This means you are free to use the code, but please leave this copyright notice intact
 // Added relToSrc performance....
 (function ($) {
+	"use strict";
     $.fn.bannerRotate = function (options) {
-        'use strict';
         var defaults = {
             speed: 500,
             secSpeed: 500,
@@ -26,13 +26,13 @@
             },
             stopInterval: function (interv) {
                 if (!interv) {
-                    return
+                    return;
                 }
                 window.clearInterval(interv);
             },
             stopTimeout: function (timeOut) {
                 if (!timeOut) {
-                    return
+                    return;
                 }
                 window.clearTimeout(timeOut);
             },
@@ -46,8 +46,8 @@
                     return timeNow - initTime;
                 }
             }
-        };
-        var options = $.extend(defaults, options);
+        },
+			options = $.extend(defaults, options);
         return this.each(function (i, el) {
             // EB added Dec 22 2010, in case of 1 banner only
             if ($(this).children().length > 1) {
@@ -57,6 +57,7 @@
                     bannerNav = bannerContainer.append((options.builedNav(bannersLength).fadeIn(options.secSpeed))).find(".controlsContainer a"),
                     next = 1,
                     last = 0,
+					indexOfClicked,
                     updateValues = function (clicked) {
                         if (clicked) {
                             last = indexOfClicked;
@@ -68,7 +69,7 @@
                     },
                     initTime = 0,
                     relToSrced = false,
-                    fadeIntervalID, indexOfClicked, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout, fadeInterval = function () {
+                    fadeIntervalID, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout, fadeInterval = function () {
                         if (options.addHoverUsability.active) {
                             do {
                                 initTime = options.addHoverUsability.getMiliseconds();
