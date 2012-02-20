@@ -54,6 +54,33 @@
 				var bannerContainer = $(el),
 					banners = bannerContainer.children(),
 					bannersLength = banners.length,
+					relToSrc = function (init) {
+						if (relToSrced) {
+							return;
+						}
+						var bannerChildren = bannerContainer.children(),
+							innerRelToSrc = function(collection){
+								collection.each(function(){
+									var jThis = $(this);
+										if(jThis.is("a")){
+											jThis.css("background", jThis.attr("rel"))	
+										}else{
+											var img = jThis.find("img") 
+											img.attr("src", img.attr("rel"))	
+										}
+								})
+						}
+						if(init){
+							innerRelToSrc(bannerChildren.eq(0))
+							return	
+						}else{
+							innerRelToSrc(bannerChildren.slice(1))
+							relToSrced = true;
+	
+						}
+						
+					},
+					sourceFirst = relToSrc(1),
 					bannerNav = bannerContainer.append((options.builedNav(bannersLength).fadeIn(options.secSpeed))).find(".controlsContainer a"),
 					next = 1,
 					last = 0,
@@ -71,7 +98,7 @@
 					relToSrced = false, fadeIntervalID, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout,
 					fadeInterval = function () {
 						if (options.addHoverUsability.active) {
-							do {
+							do{
 								initTime = options.addHoverUsability.getMiliseconds();
 							} while (0);
 						}
@@ -83,16 +110,6 @@
 					},
 					schedFadeInterval = function () {
 						fadeIntervalID = setInterval(fadeInterval, options.interval);
-					},
-					relToSrc = function () {
-						if (relToSrced) {
-							return;
-						}
-						bannerContainer.find("> :gt(0)").not(".controlsContainer").each(function (i, e) {
-							var el = $(e);
-							el.css("background", el.attr("rel"));
-							relToSrced = true;
-						});
 					};
 
 					// prevents children elements to trigger mouseout from rotating banner
