@@ -55,7 +55,6 @@
 					banners = bannerContainer.children(),
 					bannersLength = banners.length,
 					relToSrc = function (init) {
-						console.log("relToSrc")
 						if (relToSrced) {
 							return;
 						}
