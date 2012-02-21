@@ -4,7 +4,6 @@
 // This means you are free to use the code, but please leave this copyright notice intact
 // Added relToSrc performance....
 (function ($) {
-	"use strict";
 	$.fn.bannerRotate = function (opt) {
 		var defaults = {
 			speed: 500,
