@@ -9,15 +9,7 @@ It also allows you to have a wide range of markup options avaliable.
 **Requires**: jQuery *1.4 and up*.
 
 
-#### Options
-Banner Rotator Lets you have many layouts 
-	
-	speed [default = 500],
-	secSpeed: [default = 500],
-	interval: [default = 4000],
-	shouldHoverSwitch: [default =false],
-	builedNav [default = builds controlContianer],
-	addHoverUsability [default = true]
+### Basic Markup
 	
 	<container> 
 		<itmes/>
@@ -95,6 +87,17 @@ The follwing is just a demo:
    After document.ready or load 
     	
     	$(".rotateWidget").bannerRotate({speed:1000, interval:6000});
+
+#### Options
+Banner Rotator Lets you have many layouts 
+	
+	speed [default = 500],
+	secSpeed: [default = 500],
+	interval: [default = 4000],
+	shouldHoverSwitch: [default =false],
+	builedNav [default = builds controlContianer],
+	addHoverUsability [default = true]
+
 
 Follow [@adardesign](http://twitter.com/adardesign) on Twitter for the latest news.
 
