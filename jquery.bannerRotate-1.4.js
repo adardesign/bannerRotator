@@ -59,15 +59,21 @@
 						}
 						var bannerChildren = bannerContainer.children(),
 							rel,
+							img,
 							innerRelToSrc = function(collection){
 								collection.each(function(){
 									var jThis = $(this);
 										if(jThis.is("a")){
 											rel = jThis.attr("rel") 
-											rel && jThis.css("background", rel)	
+											rel && jThis.css("background-image", rel)	
 										}else{
-											var img = jThis.find("img"),
-												rel =  img.attr("rel");
+											// if its a img itself
+											if(jThis.is("img")){
+												img = jThis;
+											}else{
+												img = jThis.find("img");
+											}
+											rel =  img.attr("rel");
 											rel && img.attr("src", rel)	
 										}
 								})
