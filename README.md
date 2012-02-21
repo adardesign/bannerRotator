@@ -1,5 +1,4 @@
 # Banner Rotator
-
 ![Mou icon](http://ebraun.adorama.com/images/bannerRotator.png)
 
 ## Overview
