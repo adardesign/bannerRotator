@@ -53,16 +53,19 @@
 				var bannerContainer = $(el),
 					banners = bannerContainer.children(),
 					bannersLength = banners.length,
+                    relToSrced,
 					relToSrc = function (init) {
+                         console.log("init", init, $.now())
 						if (relToSrced) {
-							return;
+							return false;
 						}
-						var bannerChildren = bannerContainer.children(),
-							rel,
+						var rel,
 							img,
 							innerRelToSrc = function(collection){
 								collection.each(function(){
 									var jThis = $(this);
+                                         console.log("jThis", jThis, $.now())
+       
 										if(jThis.is("a")){
 											rel = jThis.attr("rel") 
 											rel && jThis.css("background-image", rel)	
@@ -79,16 +82,16 @@
 								})
 						}
 						if(init){
-							innerRelToSrc(bannerChildren.eq(0))
+							innerRelToSrc(banners.eq(0))
 							return	
 						}else{
-							innerRelToSrc(bannerChildren.slice(1))
+							innerRelToSrc(banners.slice(1))
 							relToSrced = true;
 	
 						}
 						
 					},
-					sourceFirst = relToSrc(1),
+					sourceFirst = relToSrc(true),
 					bannerNav = bannerContainer.append((options.builedNav(bannersLength).fadeIn(options.secSpeed))).find(".controlsContainer a"),
 					next = 1,
 					last = 0,
@@ -103,7 +106,7 @@
 						}
 					},
 					initTime = 0,
-					relToSrced = false, fadeIntervalID, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout,
+					fadeIntervalID, newSchedFadeInterval, newSschedcallDoFade, fadeTimeout,
 					fadeInterval = function () {
 						if (options.addHoverUsability.active) {
 							do{
@@ -148,7 +151,7 @@
 				})
 				// delegate (to boost performance)
 				.find(".controlsContainer").delegate("a", "click", function () {
-					!relToSrced && relToSrc();
+					!relToSrced && relToSrc(false);
 					var clickedNav = $(this);
 					if (clickedNav.hasClass("active")) {
 						return false;
@@ -176,7 +179,7 @@
 			bannerNav.eq(0).addClass("active");
 			banners.not(":eq(0)").hide();
 			schedFadeInterval();
-			setTimeout(relToSrc, options.interval / 2);
+                         setTimeout(function(){relToSrc()}, options.interval / 2);
 			if (options.addHoverUsability.active) {
 				do {
 					initTime = options.addHoverUsability.getMiliseconds();
