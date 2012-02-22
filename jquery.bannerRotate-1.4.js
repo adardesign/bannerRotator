@@ -55,7 +55,6 @@
 					bannersLength = banners.length,
                     relToSrced,
 					relToSrc = function (init) {
-                         console.log("init", init, $.now())
 						if (relToSrced) {
 							return false;
 						}
@@ -64,8 +63,6 @@
 							innerRelToSrc = function(collection){
 								collection.each(function(){
 									var jThis = $(this);
-                                         console.log("jThis", jThis, $.now())
-       
 										if(jThis.is("a")){
 											rel = jThis.attr("rel") 
 											rel && jThis.css("background-image", rel)	
