@@ -102,3 +102,6 @@ Banner Rotator Lets you have many layouts
 Follow [@adardesign](http://twitter.com/adardesign) on Twitter for the latest news.
 
 For feedback, use the menu `Help` - `Send Feedback`
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/adardesign/bannerrotator/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
