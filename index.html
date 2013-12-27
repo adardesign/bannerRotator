@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Bannerrotator : banner rotator" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Bannerrotator</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/adardesign/bannerRotator">View on GitHub</a>
+
+          <h1 id="project_title">Bannerrotator</h1>
+          <h2 id="project_tagline">banner rotator</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/adardesign/bannerRotator/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/adardesign/bannerRotator/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="banner-rotator" class="anchor" href="#banner-rotator"><span class="octicon octicon-link"></span></a>Banner Rotator</h1>
+
+<p><img src="http://ebraun.adorama.com/images/bannerRotator.png" alt="Banner rotator on adorama.com"></p>
+
+<h4>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h4>
+
+<p>bannerRotate allows you to have banner rotating but is very light and took web page loading speed to a new level, By not having all these images sources load initially. </p>
+
+<p>It also allows you to have a wide range of markup options avaliable.   </p>
+
+<p><strong>Requires</strong>: jQuery <em>1.4 and up</em>.</p>
+
+<h3>
+<a name="basic-markup" class="anchor" href="#basic-markup"><span class="octicon octicon-link"></span></a>Basic Markup</h3>
+
+<pre><code>&lt;container&gt; 
+    &lt;itmes/&gt;
+    &lt;itmes/&gt;
+    &lt;itmes/&gt;
+&lt;/container&gt;    
+</code></pre>
+
+<p>Where <code>&lt;items&gt;</code> can be any element. </p>
+
+<h3>
+<a name="html-markup" class="anchor" href="#html-markup"><span class="octicon octicon-link"></span></a>HTML Markup</h3>
+
+<p>The follwing is just a demo:</p>
+
+<pre><code>&lt;div class="rotateWidget"&gt; &lt;!-- name it as you want --&gt;
+    &lt;a href="#" rel="url(path/to/img)"&gt;&lt;/a&gt;
+    &lt;a href="#" rel="url(path/to/img)"&gt;&lt;/a&gt;
+    &lt;img rel="path/to/img/"/&gt;
+    &lt;div&gt;
+        &lt;img rel="rel="path/to/img/"/&gt;
+    &lt;/div&gt;
+&lt;/div&gt;         
+</code></pre>
+
+<h3>
+<a name="css-markup" class="anchor" href="#css-markup"><span class="octicon octicon-link"></span></a>CSS Markup</h3>
+
+<pre><code>.rotateWidget {
+    position: relative;
+    width: 550px; /*varies*/
+    height: 245px; /*varies*/
+    float: left;
+    border: 1px solid #CCC;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+ .rotateWidget &gt; * { display: none; 
+     position: absolute; 
+     width: 550px; /*varies*/
+     height: 245px; /*varies*/
+     top: 0; 
+     left: 0;
+     float: left;
+  }
+ .rotateWidget &gt; :first-child {
+     z-index: 1;
+     display: block;
+   }
+.rotateWidget &gt; .controlscontainer {
+   position: absolute;
+   display: block;
+   height: 15px;
+   width: auto;
+   left: auto;
+   right: 10px;
+   top: 10px;
+   z-index: 2;
+  }
+.rotateWidget &gt; .controlscontainer &gt; a {
+    position: relative;
+    width: 13px;
+    height: 6px;
+    border-radius: 2px;
+    top: -2px;
+    margin-right: 2px;
+    float:left;
+    background-color: #999;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1px rgba(255,255,255,0.9), 0 1px 0 rgba(0,0,0,0.2) inset;
+ }
+.rotateWidget &gt; .controlscontainer &gt; a.active {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: 0 0 1px rgba(0,0,0,0.2), 0 1px 0 white inset, 0 1px 0 rgba(0,0,0,0.25);
+  }
+</code></pre>
+
+<h3>
+<a name="javascript-markup" class="anchor" href="#javascript-markup"><span class="octicon octicon-link"></span></a>javaScript Markup</h3>
+
+<p>After document.ready or load </p>
+
+<pre><code>    $(".rotateWidget").bannerRotate({speed:1000, interval:6000});
+</code></pre>
+
+<h4>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h4>
+
+<p>Banner Rotator Lets you have many layouts </p>
+
+<pre><code>speed [default = 500],
+secSpeed: [default = 500],
+interval: [default = 4000],
+shouldHoverSwitch: [default =false],
+builedNav [default = builds controlContianer],
+addHoverUsability [default = true]
+</code></pre>
+
+<p>Follow <a href="http://twitter.com/adardesign">@adardesign</a> on Twitter for the latest news.</p>
+
+<p>For feedback, use the menu <code>Help</code> - <code>Send Feedback</code></p>
+
+<p><a href="https://bitdeli.com/free" title="Bitdeli Badge"><img src="https://d2weczhvl823v0.cloudfront.net/adardesign/bannerrotator/trend.png" alt="Bitdeli Badge"></a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Bannerrotator maintained by <a href="https://github.com/adardesign">adardesign</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
